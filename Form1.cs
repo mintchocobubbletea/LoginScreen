@@ -48,6 +48,7 @@ namespace LoginScreen
         string myID = "admin";
         string myPW = "superman";
 
+        //로그인 함수
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string inputID = txtID.Text;
