@@ -33,6 +33,8 @@
             txtPW = new TextBox();
             btnLogin = new Button();
             lblErrorMsg = new Label();
+            btnClear = new Button();
+            chkShowPW = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -95,11 +97,34 @@
             lblErrorMsg.Text = "아이디 또는 비밀번호가 잘못 되었습니다.";
             lblErrorMsg.Visible = false;
             // 
+            // btnClear
+            // 
+            btnClear.Location = new Point(280, 274);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 5;
+            btnClear.Text = "초기화";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
+            // 
+            // chkShowPW
+            // 
+            chkShowPW.AutoSize = true;
+            chkShowPW.Location = new Point(350, 234);
+            chkShowPW.Name = "chkShowPW";
+            chkShowPW.Size = new Size(102, 19);
+            chkShowPW.TabIndex = 6;
+            chkShowPW.Text = "비밀번호 보기";
+            chkShowPW.UseVisualStyleBackColor = true;
+            chkShowPW.CheckedChanged += chkShowPW_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(391, 451);
+            ClientSize = new Size(456, 451);
+            Controls.Add(chkShowPW);
+            Controls.Add(btnClear);
             Controls.Add(lblErrorMsg);
             Controls.Add(btnLogin);
             Controls.Add(txtPW);
@@ -118,5 +143,7 @@
         private TextBox txtPW;
         private Button btnLogin;
         private Label lblErrorMsg;
+        private Button btnClear;
+        private CheckBox chkShowPW;
     }
 }
