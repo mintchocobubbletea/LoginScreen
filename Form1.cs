@@ -46,13 +46,34 @@ namespace LoginScreen
         }
 
         string myID = "admin";
-        string myPW = "superman";
-
-        //로그인 함수
-        private void btnLogin_Click(object sender, EventArgs e)
+        string myPW = "superman1";
+        int loginFailCount = 0; // 실패 횟수 저장
+        int waitTime = 30;     // 재시도 대기 시간(초)
+        private bool IsValidInput(string id, string pw)
         {
-            string inputID = txtID.Text;
-            string inputPW = txtPW.Text;
+            // 아이디에 공백이 포함되어 있는지 확인
+            if (id.Contains(" "))
+            {
+                lblErrorMsg.Text = "아이디에 공백을 포함할 수 없습니다.";
+                return false;
+            }
+
+            // 비밀번호는 최소 8자 이상, 숫자 포함 필수
+            bool hasNumber = pw.Any(char.IsDigit);
+            if (pw.Length < 8 || !hasNumber)
+            {
+                lblErrorMsg.Text = "비밀번호는 8자 이상이며 숫자를 포함해야 합니다.";
+                return false;
+            }
+
+            return true;
+        }
+        //로그인 함수
+        private async void btnLogin_Click(object sender, EventArgs e)
+        {
+            string inputID = txtID.Text; string inputPW = txtPW.Text;
+            if (!IsValidInput(inputID, inputPW)) { lblErrorMsg.Visible = true; return; }
+
             if (inputID == myID && inputPW == myPW)
             {
                 lblErrorMsg.Visible = false;
@@ -60,8 +81,20 @@ namespace LoginScreen
             }
             else
             {
+                loginFailCount++;
                 lblErrorMsg.Visible = true;
-                //MessageBox.Show("로그인 실패~", "로그인", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (loginFailCount >= 5)
+                {
+                    btnLogin.Enabled = false;
+                    lblErrorMsg.Text = "5회 실패! 30초 후 다시 시도하세요.";
+
+                    await Task.Delay(waitTime * 1000); // 비동기 대기
+
+                    btnLogin.Enabled = true;
+                    loginFailCount = 0;
+                    lblErrorMsg.Text = "다시 시도할 수 있습니다.";
+                }
             }
         }
 
@@ -117,5 +150,10 @@ namespace LoginScreen
                 }
             }
         }
+
+        
+       
+        
+
     }
 }

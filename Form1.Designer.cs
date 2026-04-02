@@ -99,7 +99,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(280, 274);
+            btnClear.Location = new Point(350, 270);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(75, 23);
             btnClear.TabIndex = 5;
