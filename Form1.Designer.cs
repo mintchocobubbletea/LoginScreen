@@ -48,21 +48,25 @@
             // 
             txtID.Font = new Font("맑은 고딕", 25F);
             txtID.ForeColor = Color.Silver;
-            txtID.Location = new Point(64, 135);
+            txtID.Location = new Point(43, 138);
             txtID.Name = "txtID";
-            txtID.Size = new Size(257, 52);
-            txtID.TabIndex = 1;
+            txtID.Size = new Size(301, 52);
+            txtID.TabIndex = 2;
             txtID.Text = "아이디";
+            txtID.Enter += txtID_Enter;
+            txtID.Leave += txtID_Leave;
             // 
             // txtPW
             // 
             txtPW.Font = new Font("맑은 고딕", 25F);
             txtPW.ForeColor = Color.Silver;
-            txtPW.Location = new Point(64, 213);
+            txtPW.Location = new Point(43, 216);
             txtPW.Name = "txtPW";
-            txtPW.Size = new Size(257, 52);
-            txtPW.TabIndex = 1;
+            txtPW.Size = new Size(301, 52);
+            txtPW.TabIndex = 3;
             txtPW.Text = "패스워드";
+            txtPW.Enter += txtPW_Enter;
+            txtPW.Leave += txtPW_Leave;
             // 
             // btnLogin
             // 
@@ -72,9 +76,10 @@
             btnLogin.Location = new Point(120, 313);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(133, 61);
-            btnLogin.TabIndex = 2;
+            btnLogin.TabIndex = 1;
             btnLogin.Text = "로그인";
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // Form1
             // 
